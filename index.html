@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="index.css">
+
+
+    <title>my tic tac toe</title>
+    <script src="https://kit.fontawesome.com/24f69881e0.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <nav>
+        <h1>Tic Tac Toe</h1>
+    </nav>
+    <div class="container">
+        <div class="game-box">
+            <div class="lines">
+                <div class="won-line"></div>
+                <div class="box bt bl"><span class="info-text"> </span></div>
+                <div class="box bt bl br"><span class="info-text"> </span></div>
+                <div class="box bt br"><span class="info-text"> </span></div>
+                <div class="box bl bt bb"><span class="info-text"> </span></div>
+                <div class="box bb bt br bl"><span class="info-text"> </span></div>
+                <div class="box br bb bt"><span class="info-text"> </span></div>
+                <div class="box bl bb"><span class="info-text"> </span></div>
+                <div class="box bl br bb"><span class="info-text"> </span></div>
+                <div class="box bb br"><span class="info-text"> </span></div>
+            </div>
+        </div>
+        <div class="info-box">
+            <h1 class="game-name">Tic Tac Toe <i class="speak fas fa-volume-mute" title="sound"></i></h1>
+            <div class="turn">Good luck you both!....</div>
+            <button class="reset" type="reset">Reset</button>
+            <div class="dance">
+                <img class="img" src="won.gif" alt="">
+            </div>
+            <div class="score">
+                <div class="player1">Player1<br><br><span class="p1"></span></div>
+                <div class="player2">Player2<br><br><span class="p2"></span></div>
+            </div>
+        </div>
+
+    </div>
+    <script src="index.js"></script>
+</body>
+
+</html>
