@@ -1,19 +1,42 @@
 let tap = new Audio("tap.wav");
-let bg = new Audio("bg.wav")
-let vic = new Audio('lose.wav');
+let bg = new Audio("bg.mp3")
+let vic = new Audio('win.wav');
 let r = new Audio('reset.wav');
 let tie = new Audio("tie.wav");
+let mode = new Audio("sweep.mp3");
 var line = document.querySelector(".won-line");
+var dark_mod = document.querySelector(".dark-mod3");
+var body = document.querySelector(".body");
 var p1, p2;
 p1 = p2 = 0;
 //initially paused
 bg.pause();
 
+const dark = () => {
+    body.style.backgroundColor = "black";
+    body.style.color = "white";
+}
+const light = () => {
+    body.style.backgroundColor = "white";
+    body.style.color = "black";
+}
+
+dark_mod.addEventListener('click', function() {
+    if (dark_mod.className == "dark-mod3 fas fa-sun") {
+        mode.play();
+        dark_mod.className = "dark-mod3 fas fa-moon";
+        dark();
+    } else {
+        light();
+        mode.play();
+        dark_mod.className = "dark-mod3 fas fa-sun";
+    }
+})
 var turnCounter = 0;
 
 //making score of both player 0
 document.querySelector(".p1").innerText = p1;
-document.querySelector(".p2").innerText = p1;
+document.querySelector(".p2").innerText = p2;
 
 //for background music
 var s = document.querySelector(".speak");
@@ -54,17 +77,16 @@ Array.from(boxes).forEach((elements) => {
             if (elements.innerText == "") {
                 elements.innerText = changeTurn();
                 tap.play();
-                document.querySelector(".turn").innerText = "Player " + (turn + 1) + "'s" + " turn" + "\ncount=" + turnCounter;
+                document.querySelector(".turn").innerText = "Player " + (turn + 1) + "'s" + " turn";
             }
             chkWin();
             if (turnCounter == 9 && gameWon == false) {
                 document.querySelector(".turn").innerText = "Ooops no one won\n please try again....!";
                 tie.play();
-
             }
         }
         if (gameWon == true) {
-            if (turn + 1 === 1) {
+            if (turn + 1 === 2) {
                 p1++;
                 document.querySelector(".p1").innerText = p1;
             } else {
@@ -80,7 +102,9 @@ Array.from(boxes).forEach((elements) => {
 
 document.querySelector(".reset").addEventListener('click', function() {
         //play the reset music along with that make all boxes blank
-        r.play();
+        if (!bg.paused) {
+            r.play();
+        }
         Array.from(boxes).forEach(function(e) {
                 e.innerText = '';
             })
@@ -117,11 +141,11 @@ const chkWin = () => {
         if ((b[e[0]].innerText === b[e[1]].innerText) && (b[e[1]].innerText === b[e[2]].innerText) && (b[e[0]].innerText != "")) {
 
             //printing that player (tunr+1) won 
+            changeTurn();
             document.querySelector(".turn").innerText = "Player " + (turn + 1) + " won";
+            changeTurn();
             //playing the victory sound
             vic.play();
-            //pausing the normal bg sound
-            bg.pause();
             //gamewon true
             gameWon = true;
             //image size 50 dancing cat

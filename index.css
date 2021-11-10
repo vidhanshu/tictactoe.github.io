@@ -5,11 +5,25 @@
     padding: 0;
 }
 
+nav i {
+    font-size: 25px;
+    margin: 0px 10px;
+    cursor: pointer;
+}
+
+.body {
+    transition: .7s;
+}
+
 nav {
+    background-color: blueviolet;
     background-color: blueviolet;
     color: white;
     padding: 10px 5px;
     font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .game-name {
@@ -146,4 +160,14 @@ nav {
     .player1 {
         flex-basis: 50%;
     }
+}
+
+.footer h1 {
+    display: block;
+    text-align: center;
+    font-size: 20px;
+}
+
+.footer i {
+    color: red;
 }
