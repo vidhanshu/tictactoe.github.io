@@ -11,7 +11,7 @@ var p1, p2;
 p1 = p2 = 0;
 //initially paused
 bg.pause();
-
+/* dark mode */
 const dark = () => {
     body.style.backgroundColor = "black";
     body.style.color = "white";
@@ -70,7 +70,8 @@ var gameWon = false;
 //getting all the elements from the html that are having class name "bax" and parsing this htmlobject collection into array
 var boxes = document.getElementsByClassName("box");
 //for every element in the array we have placed an event listener in such a way that if somebody press the  particular box then the function will be called which will chk if the box is empty or not if empty then and then onlly it will write x or o depending upon players turn
-Array.from(boxes).forEach((elements) => {
+const ar = [...boxes]; //spread operator 
+ar.map((elements) => {
     elements.addEventListener('click', function() {
         //change the inner html ifff there is nothing in the box else don't 
         if (gameWon != true) {
@@ -105,7 +106,7 @@ document.querySelector(".reset").addEventListener('click', function() {
         if (!bg.paused) {
             r.play();
         }
-        Array.from(boxes).forEach(function(e) {
+        ar.forEach(function(e) {
                 e.innerText = '';
             })
             //write again bes of luck into info text
@@ -150,8 +151,6 @@ const chkWin = () => {
             gameWon = true;
             //image size 50 dancing cat
             document.querySelector(".img").style.width = "50%";
-            //mute
-            s.classList.replace("fa-volume-up", "fa-volume-mute");
             //line red
 
             if (e[0] == 0 && e[2] == 2) {
